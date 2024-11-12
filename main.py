@@ -1,10 +1,19 @@
-from number_theory import divisibility
-import math
-from number_theory import primes
+from operations import operations
 
-# print(divisibility.extended_gcd(8, 2, 14, 20, 6, 3))
-# print(primes.euler_phi(12345612))
-print(primes.factor_integer(81))
-print(primes.factor_integer(120))
+# operations.all_shifts("hello world")
 
-print(primes.next_prime(16123689073))
+# txt = "VVHQWVVRHMUSGJGTH"
+
+
+# # print(operations.coinc("VVHQWVVRHMUSGJGTH", 5))
+# # print(operations.frequency(operations.choose(txt, 5, 1)))
+# # val = operations.choose(txt, 5, 1)
+
+# # print(operations.vigvec(txt, 5, 1))
+# print(operations.corr([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25, 0.5, 0.0, 0.0, 0.0, 0.0]))
+
+vvhq = "vvhqwvvrhmusgjgthkihtssejchlsfcbgvwcrlryqtfsvgahwkcuhwauglqhnslrljshbltspisprdxljsveeghlqwkasskuwepwqtwvspgoelkcqyfnsvwljsniqkgnrgybwlwgoviokhkazkqkxzgyhcecmeiujoqkwfwvefqhkijrclrlkbienqfrjljsdhgrhlsfqtwlauqrhwdmwlgusgikkflryvcwvspgpmlkassjvoqxeggveyggzmljcxxljsvpaivwikvrdrygfrjljslveggveyggeiapuuisfpbtgnwwmuczrvtwglrwugumnczvile"
+q = "themethodusedforthepreparationandreadingofcodemessagesissimpleintheextremeandatthesametimeimpossibleoftranslationunlessthekeyisknowntheeasewithwhichthekeymaybechangedisanotherpointinfavoroftheadoptionofthiscodebythosedesiringtotransmitimportantmessageswithouttheslightestdangeroftheirmessagesbeingreadbypoliticalorbusinessrivalsetc"
+print(operations.corr(operations.vigvec(vvhq, 5, 1)))
+
+print(operations.vigenere(vvhq, [-2, -14, -3, -4, -18]))
