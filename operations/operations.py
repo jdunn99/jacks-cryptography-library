@@ -186,3 +186,18 @@ def vigenere(txt, v):
   
   return result
     
+def lfsr(c, k, n):
+  """
+  Gives the sequence of n bits produced by the recurrence that has coefficients given by the vector c.
+  The initial values of the bits are given by the vector k
+  """
+  result = k
+  positives = [i for i in range(len(c)) if c[i] == 1]
+  
+  for i in range(n - len(k)):
+    new_bit = 0
+    for j in positives:
+      new_bit ^= result[i + j]
+    result.append(new_bit)
+
+  return result
