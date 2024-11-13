@@ -26,16 +26,6 @@ def extended_euclidean(a, b):
 
   Returns:
   """
-  # while r != 0:
-  #   quotient = old_r // r
-  #   old_r, r = r, old_r - quotient * r
-  #   old_s, s = r, old_r - quotient * r
-  #   old_t, t = r, old_r - quotient * r
-  # if b == 0:
-  #   return (a, 1, 0)
-  # g, x1, y1 = extended_euclidean(b, a % b)
-  # x = x1
-  # y = x1 - (a // b) * y1
   old_r, r = a, b
   old_s, s = 1, 0
   old_t, t = 0, 1
