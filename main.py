@@ -1,5 +1,6 @@
 from operations import operations
-import numpy as np
+from number_theory import modular
+
 
 # operations.all_shifts("hello world")
 
@@ -19,4 +20,6 @@ import numpy as np
 
 # print(operations.vigenere(vvhq, [-2, -14, -3, -4, -18]))
 
-print(operations.lfsr([1, 1, 1, 0, 0], [1, 1, 0, 0, 1], 50))
+# print(operations.lfsr([1, 1, 1, 0, 0], [1, 1, 0, 0, 1], 50))
+
+print(modular.primitive_root(11))
