@@ -24,4 +24,25 @@ from number_theory import modular
 
 # print(modular.primitive_root(11))
 sequence = [1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1]
-print(operations.lfsr_length(sequence, 10))
+
+# seq = [0,1,1,0,1,0,1,1,1,1,0,0]
+
+c = operations.lfsr_solve(sequence, 6)
+n = 6
+
+s = ""
+
+for i in range(n):
+  if  c[i] == 1:
+    if(i == 0):
+      s += "x_n"
+    else:
+      s += f'x_(n + {i})'
+
+    if(i < n - 2):
+      s += " + "
+
+print(s)
+print(f'Approximation is x_{n} ≡ {s}')
+
+print(operations.lfsr_solve(sequence, 6))
