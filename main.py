@@ -22,4 +22,6 @@ from number_theory import modular
 
 # print(operations.lfsr([1, 1, 1, 0, 0], [1, 1, 0, 0, 1], 50))
 
-print(modular.primitive_root(11))
+# print(modular.primitive_root(11))
+sequence = [1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1]
+print(operations.lfsr_length(sequence, 10))

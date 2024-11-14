@@ -23,8 +23,7 @@ def primitive_root(n):
     https://math.stackexchange.com/q/133720
   """
   s = euler_phi(n)
-  prime_factors = [x[0] for x in factor_integer(s)]
-  powers = [n // x for x in prime_factors]
+  powers = [n // x[0] for x in factor_integer(s)]
 
   roots = []
 

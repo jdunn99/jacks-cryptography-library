@@ -3,6 +3,7 @@ This is a temporary file while I build out the more complex cryptographic operat
 Once everything works and is tested, I will port into their own modules
 """
 
+import numpy
 from number_theory import gcd, modular
 
 # def addell(xy, uv, b, c, n)
@@ -199,5 +200,29 @@ def lfsr(c, k, n):
     for j in positives:
       new_bit ^= result[i + j]
     result.append(new_bit)
+
+  return result
+
+def lfsr_length(v, n):
+  """
+  Given a guess n for the length of the recurrence relationthat generates the binary
+  vector v, it computes the coefficients of the recurrence.
+  """
+
+  result = []
+
+  for m in range(1, n + 1):
+    matrix = []
+    for i in range(m):
+      row = v[i: i + m]
+      if len(row) < m:
+        break
+      matrix.append(row)
+
+    # HACK: I used numpy because matrices are a lot of work. :(
+    # TODO: Write it myself!
+    matrix = numpy.array(matrix) 
+    det = round(numpy.linalg.det(matrix)) % 2
+    result.append((m, det))
 
   return result
