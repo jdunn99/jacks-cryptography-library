@@ -4,12 +4,17 @@ def gcd(a: int, b: int) -> int:
   """
   Calculates the greatest common divisor of two integers using the Euclidean algorithm.
 
-  Parameters:
-  a (int): The first integer.
-  b (int): The second integer.
+  Parameters
+  ----------
+  a : int
+      The first integer.
+  b : int
+      The second integer.   
 
-  Returns:
-  int: The greatest common divisor of a a and b.
+  Returns
+  -------
+  x : int
+      The greatest commmon divisor of a and b
   """
   while b:
     a, b = b, a % b
