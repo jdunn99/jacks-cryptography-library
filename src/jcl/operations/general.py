@@ -82,4 +82,35 @@ def choose(txt, m, n):
 
   return result
 
+def corr(v):
+  """
+  Calculates the dot product of the vector v with the 26 shifts of the alphabet frequency vector
+  """
 
+  # Found this online. TODO: Add the source
+
+  freqs = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022,
+  0.020, 0.061, 0.070, 0.0015, 0.0077, 0.040,
+  0.024, 0.067, 0.075, 0.019, 0.00095, 0.060,
+  0.063, 0.090, 0.028, 0.0098, 0.024, 0.0015,
+  0.020, 0.00074]
+
+  dot_products = []
+
+  # Calculate the 26 shifts
+
+  for i in range(26):
+    shifted = freqs[-i:] + freqs[:-i]
+    dot_product = round(sum(v[j] * shifted[j] for j in range (len(v))), 7)
+    dot_products.append(dot_product)
+
+  return dot_products
+
+def max_vector(v):
+  """
+  Finds the max value and position from a vector.
+  """
+  m = max(v)
+  i = v.index(m)
+
+  return (m, i)
