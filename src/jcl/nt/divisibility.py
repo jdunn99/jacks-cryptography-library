@@ -61,8 +61,7 @@ def extended_gcd(*args):
 
   for i in range (1, len(args)):
     a_i = args[i]
-
-    # Find the gcd and coefficients for the current gcd and the next value
+     # Find the gcd and coefficients for the current gcd and the next value
     g, x_g, x_i = extended_euclidean(g, a_i)
 
     # Update the coefficients

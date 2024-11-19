@@ -87,5 +87,3 @@ def decrypt(txt):
 
   key = [k * - 1 for k in key]
   return encrypt(txt, key)
-
-print(encrypt("themethodusedforthepreparationandreadingofcodemessagesissimpleintheextremeandatthesametimeimpossibleoftranslationunlessthekeyisknowntheeasewithwhichthekeymaybechangedisanotherpointinfavoroftheadoptionofthiscodebythosedesiringtotransmitimportantmessageswithouttheslightestdangeroftheirmessagesbeingreadbypoliticalorbusinessrivalsetc", [2, 14, 3, 4, 18]))
