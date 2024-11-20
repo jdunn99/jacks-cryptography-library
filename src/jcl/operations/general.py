@@ -2,6 +2,9 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
             'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+def alpha_to_num(char: str) -> int:
+  return ord(char) - 97
+
 def shift(plaintext: str, n: int) -> str:
   """
   Shifts a text by n
@@ -19,7 +22,7 @@ def shift(plaintext: str, n: int) -> str:
     if text == " ":
       continue
 
-    num = ((ord(text) - 97) + n) % 26
+    num = (alpha_to_num(text) + n) % 26
     result += alphabet[num]
   return result
 

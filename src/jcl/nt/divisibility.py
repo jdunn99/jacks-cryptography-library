@@ -70,3 +70,6 @@ def extended_gcd(*args):
     coefficients[i] = x_i
 
   return g, coefficients
+
+def lcm(a, b):
+  return abs(a * b) // gcd(a, b)

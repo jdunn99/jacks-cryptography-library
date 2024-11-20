@@ -1,4 +1,4 @@
-from number_theory import divisibility
+from jcl.nt import divisibility
 import math
 import random
 
