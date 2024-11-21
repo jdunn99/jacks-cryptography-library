@@ -28,28 +28,30 @@ def generate_keys():
 
 def encrypt(txt, public_key):
   n, e = public_key 
+  chunk_size = (n.bit_length() - 1) // 8
+  txt_bytes = txt.encode("utf-8")
 
-  # Convert to numbers
-  numerical = ""
-  for char in txt:
-    if char == " ":
-      continue
-    numerical += str(alpha_to_num(char) % 26)
+  ciphertext = []
+  for i in range(0, len(txt_bytes), chunk_size):
+    chunk = txt_bytes[i : i + chunk_size]
+    ciphertext.append(pow(int.from_bytes(chunk, 'big'), e, n))
 
-  print(numerical)
-
-  return pow(int(numerical), e, n)
+  return ciphertext
 
 def decrypt(txt, private_key):
   n, d = private_key
-  numerical = str(pow(txt, d, n))
+  chunk_size = (n.bit_length() - 1) // 8
+  
+  ptxt_bytes = b''
+  for chunk in txt:
+    ptxt_bytes += pow(chunk, d, n).to_bytes(chunk_size, 'big').rstrip(b'\x00')
 
-  return result
+  return ptxt_bytes.decode('utf-8')
 
 public, private = generate_keys()
-# print("KEYS: ", public, private)
-ciphertext = encrypt("hello", (3233, 17))
-print("CIPHERTEXT: ", ciphertext)
-print(decrypt(ciphertext, (3233, 413)))
+ciphertext = encrypt("howdy partner", public)
+print(ciphertext)
+plaintext = decrypt(ciphertext, private)
+print(plaintext)
 
 
