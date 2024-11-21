@@ -34,24 +34,23 @@ def encrypt(txt, public_key):
   ciphertext = []
   for i in range(0, len(txt_bytes), chunk_size):
     chunk = txt_bytes[i : i + chunk_size]
-    ciphertext.append(pow(int.from_bytes(chunk, 'big'), e, n))
+    encrypted_chunk = pow(int.from_bytes(chunk, 'big'), e, n)
+    # Make sure all chunks are the same length
+    ciphertext.append(f"{encrypted_chunk:0{len(str(n))}d}")
 
-  return ciphertext
+  return "".join(str(x) for x in ciphertext)
 
 def decrypt(txt, private_key):
   n, d = private_key
-  chunk_size = (n.bit_length() - 1) // 8
-  
+
+  # All chunks are n length
+  chunk_length = len(str(n))
+
+  chunks = [int(txt[i : i + chunk_length]) for i in range(0, len(txt), chunk_length)]
+
   ptxt_bytes = b''
-  for chunk in txt:
-    ptxt_bytes += pow(chunk, d, n).to_bytes(chunk_size, 'big').rstrip(b'\x00')
+  for chunk in chunks:
+    decrypted_chunk = pow(chunk, d, n)
+    ptxt_bytes += decrypted_chunk.to_bytes((decrypted_chunk.bit_length() + 7) // 8, "big").rstrip(b'\x00')
 
-  return ptxt_bytes.decode('utf-8')
-
-public, private = generate_keys()
-ciphertext = encrypt("howdy partner", public)
-print(ciphertext)
-plaintext = decrypt(ciphertext, private)
-print(plaintext)
-
-
+  return ptxt_bytes.decode('utf-8', 'ignore')
