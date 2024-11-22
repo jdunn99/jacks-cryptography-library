@@ -12,7 +12,6 @@ def power_mod(a: int, b: int, n: int) -> int:
   return pow(a, b, n)
 
 
-# Vadim (https://math.stackexchange.com/users/26767/vadim), Finding a primitive root of a prime number, URL (version: 2012-04-19): https://math.stackexchange.com/q/133720
 def primitive_root(n):
   """
   Finds the primitive root of the prime n

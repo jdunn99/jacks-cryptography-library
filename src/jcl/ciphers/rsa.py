@@ -4,6 +4,17 @@ from jcl.operations import alpha_to_num, alphabet
 import random
 
 def generate_keys():
+  """
+  Generates public and private keys using the RSA algorithm.
+
+  Returns
+  -------
+  (n, e) : tuple(int, int)
+           The public key
+  (n, d) : tuple(int, int)
+           The private key
+  """
+
   # Choose two large prime numbers p and q
   p = next_prime(random.randint(1,1024))
   q = next_prime(random.randint(1,1024))
@@ -26,7 +37,22 @@ def generate_keys():
 
   return (n, e), (n, d)
 
-def encrypt(txt, public_key):
+def encrypt(txt: str, public_key: tuple[int]) -> str:
+  """
+  Encrypts a plaintext using RSA given the public key.
+
+  Parameters
+  ----------
+  txt : str
+        The plaintext being encrypted.
+  public_key : tuple[int]
+               The public key used in the encryption process.
+  
+  Returns
+  -------
+  ciphertext : str
+               The encrypted plaintext
+  """
   n, e = public_key 
   chunk_size = (n.bit_length() - 1) // 8
   txt_bytes = txt.encode("utf-8")
@@ -41,6 +67,16 @@ def encrypt(txt, public_key):
   return "".join(str(x) for x in ciphertext)
 
 def decrypt(txt, private_key):
+  """
+  Decrypts a ciphertext back into plaintext using RSA given the private key.
+
+  Parameters
+  ----------
+  txt : str
+        The ciphertext to be decrypted
+  private_key : tuple(int) 
+                The private key used in the decryption process.
+  """
   n, d = private_key
 
   # All chunks are n length
